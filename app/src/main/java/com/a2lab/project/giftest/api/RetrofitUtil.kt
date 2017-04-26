@@ -7,8 +7,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
- * Created by pugman on 26.03.17.
- */
+* Created by pugman on 26.03.17.
+* Contact the developer - sckalper@gmail.com
+* company - A2Lab
+*/
 fun <T> createRetroFitService(clazz: Class<T>): T {
     val interceptor = HttpLoggingInterceptor()
     interceptor.level = HttpLoggingInterceptor.Level.BODY

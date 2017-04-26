@@ -38,7 +38,7 @@ class FrameObtainer(val context: Context) {
     fun retrieveFrames(file: File, chanel: Channel<Bitmap>) = async(CommonPool) {
         val step = 333333L //tried to get each third frame
         val duration = getVideoDurationInSeconds().toInt()
-        for (i in (step..duration) step 33333L) { //For some reason getting compilation error when using step function
+        for (i in (step..duration) /*step 33333L*/) { //For some reason getting compilation error when using step function
             val looper = step + i
             val bitmap = getVideoFrame(looper)
             if (bitmap != null) {
