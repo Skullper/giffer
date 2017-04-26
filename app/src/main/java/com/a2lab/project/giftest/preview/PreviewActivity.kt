@@ -8,7 +8,6 @@ import com.a2lab.project.giftest.R
 import com.a2lab.project.giftest.arch.BaseActivity
 import com.a2lab.project.giftest.preview.presentation.PreviewPresenter
 import com.a2lab.project.giftest.preview.presentation.PreviewView
-import com.a2lab.project.giftest.res
 import com.a2lab.project.giftest.share.ShareActivity
 import com.a2lab.project.giftest.utils.EXTRAS
 import com.a2lab.project.giftest.utils.FrameObtainer
@@ -29,7 +28,7 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
 
     private var pathToVideo = ""
 
-    override fun providePresenter(): PreviewPresenter = PreviewPresenter(this, FrameObtainer(this))
+    override fun providePresenter(): PreviewPresenter = PreviewPresenter(this, FrameObtainer(this), resources)
 
     override fun getLayoutResource(): Int = R.layout.activity_preview
 
@@ -46,7 +45,7 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
     }
 
     fun getFramesFromResources(): ArrayList<Int> {
-        val frames = res.obtainTypedArray(R.array.frames)
+        val frames = resources.obtainTypedArray(R.array.frames)
         val tempList = ArrayList<Int>()
         (0..frames.length()-1).mapTo(tempList) { frames.getResourceId(it, DEFAULT_FRAME) }
         frames.recycle()
@@ -68,8 +67,8 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
         notify(message)
     }
 
-    override fun onFrameObtainError(message: Any) {
-        Toast.makeText(this, message.toString(), Toast.LENGTH_LONG).show()
+    override fun onFrameObtainError(message: Int) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
         finish()
     }
 

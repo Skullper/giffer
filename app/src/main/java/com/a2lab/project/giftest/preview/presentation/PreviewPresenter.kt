@@ -1,5 +1,6 @@
 package com.a2lab.project.giftest.preview.presentation
 
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
@@ -14,7 +15,6 @@ import com.a2lab.project.giftest.api.responses.UploadingResponse
 import com.a2lab.project.giftest.arch.presentation.BasePresenter
 import com.a2lab.project.giftest.extensions.log
 import com.a2lab.project.giftest.gif.AnimatedGifEncoder
-import com.a2lab.project.giftest.res
 import com.a2lab.project.giftest.utils.FrameObtainer
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.async
@@ -36,7 +36,7 @@ import java.io.IOException
  * Contact the developer - sckalper@gmail.com
  * company - A2Lab
  */
-class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameObtainer) : BasePresenter() {
+class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameObtainer, val res: Resources) : BasePresenter() {
 
     private val model = PreviewModel()
 
@@ -49,7 +49,7 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
 
     fun convertVideoToGif(pathToVideo: String) = launch(CommonPool) {
         if (pathToVideo.isNullOrEmpty())
-            view.onFrameObtainError(res.getString(R.string.previewAct_videoRecordException))
+            view.onFrameObtainError(R.string.previewAct_videoRecordException)
         //Channel created with purpose to get first retrieved frame and set it like preview
         val bitmapChanel = Channel<Bitmap>()
         val file = File(pathToVideo)

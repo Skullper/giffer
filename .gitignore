@@ -9,3 +9,4 @@ gradle/
 gradlew
 gradlew.bat
 local.properties
+/app/app.iml

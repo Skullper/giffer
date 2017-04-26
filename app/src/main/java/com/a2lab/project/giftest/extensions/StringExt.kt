@@ -14,6 +14,3 @@ fun String.log(text: String? = "Empty", throwable: Throwable?){
 fun String.log(text: String? = "Empty"){
     Log.e(this, text)
 }
-
-
-

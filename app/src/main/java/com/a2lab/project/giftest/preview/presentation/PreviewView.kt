@@ -11,7 +11,7 @@ import com.a2lab.project.giftest.arch.presentation.BaseView
  */
 interface PreviewView: BaseView {
 
-    fun onFrameObtainError(message: Any)
+    fun onFrameObtainError(message: Int)
 
     fun setPreview(bitmap: Bitmap)
 
