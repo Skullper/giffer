@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	android:id="@+id/activity_container"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="com.a2lab.project.giftest.main.MainActivity">
+
+	<ImageView
+		android:contentDescription="@string/mainAct_bgContentDesc"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"
+		android:src="@drawable/bg_main"/>
+
+	<ImageView
+		android:contentDescription="@string/mainAct_logoContentDesc"
+		android:layout_width="@dimen/standardIconSize"
+		android:layout_height="@dimen/standardIconSize"
+		android:layout_margin="@dimen/activity_horizontal_margin"
+		android:src="@drawable/ic_camera"/>
+
+	<ImageView
+		android:id="@+id/mainAct_startIV"
+		android:layout_width="@dimen/mainAct_cameraStartIconSize"
+		android:layout_height="@dimen/mainAct_cameraStartIconSize"
+		android:layout_gravity="bottom|center_horizontal"
+		android:contentDescription="@string/mainAct_startIconContentDesc"
+		android:src="@drawable/ic_start"/>
+
+	<TextView
+		android:id="@+id/mainAct_timerTV"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:gravity="center"
+		android:textColor="@color/colorIconWhite"
+		android:textSize="110sp"
+		android:textStyle="bold"
+		android:visibility="gone"/>
+
+</FrameLayout>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Giffer</string>
+
+	<!--Main activity-->
+	<string name="mainAct_startIconContentDesc">Icon which starts camera</string>
+	<string name="mainAct_notFoundRequestException">Camera result not retrieved. Try again</string>
+	<string name="mainAct_notFoundResultException">Failed to get a video. Try again</string>
+	<string name="mainAct_logoContentDesc">Logo image</string>
+	<string name="mainAct_bgContentDesc">Background image</string>
+
+	<!--Preview activity-->
+	<string name="previewAct_gifIvContentDesc">For gif preview</string>
+	<string name="previewAct_frameIvContentDesc">For frame preview</string>
+	<string name="previewAct_videoRecordException">Cannot retrieve video</string>
+	<string name="previewAct_gifCreatedMessage">Gif created %1s</string>
+	<string name="previewAct_cannotFindFileException">Cannot find file</string>
+	<string name="previewAct_fileUploadedMessage">File successfully uploaded</string>
+	<integer-array name="frames">
+		<item>@android:color/transparent</item>
+		<item>@drawable/ic_frame_a</item>
+		<item>@drawable/ic_frame_b</item>
+		<item>@drawable/ic_frame_c</item>
+		<item>@drawable/ic_frame_d</item>
+		<item>@drawable/ic_frame_e</item>
+		<item>@drawable/ic_frame_f</item>
+		<item>@drawable/ic_frame_g</item>
+		<item>@drawable/ic_frame_h</item>
+		<item>@drawable/ic_frame_i</item>
+		<item>@drawable/ic_frame_j</item>
+		<item>@drawable/ic_frame_k</item>
+		<item>@drawable/ic_frame_l</item>
+		<item>@drawable/ic_frame_m</item>
+	</integer-array>
+
+	<!--Share activity-->
+	<string name="shareAct_phoneNumberHint">phone number</string>
+	<string name="shareAct_shareButText">Send SMS</string>
+
+</resources>

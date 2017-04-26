@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/itemBotView_Image"
+	android:layout_margin="@dimen/half_margin"
+	android:layout_width="@dimen/previewAct_framesLayoutHeight"
+	android:layout_height="@dimen/previewAct_framesLayoutHeight"
+	android:scaleType="fitXY"/>

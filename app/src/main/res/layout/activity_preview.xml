@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@+id/activity_container"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent" android:layout_height="match_parent">
+
+	<ImageView
+		android:id="@+id/previewAct_gifIV"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginBottom="@dimen/previewAct_framesLayoutHeight"
+		android:contentDescription="@string/previewAct_gifIvContentDesc"
+		android:scaleType="centerCrop"/>
+
+	<ImageView
+		android:id="@+id/previewAct_frameIV"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginBottom="@dimen/previewAct_framesLayoutHeight"
+		android:contentDescription="@string/previewAct_frameIvContentDesc"
+		android:scaleType="fitXY"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:layout_marginBottom="@dimen/previewAct_framesLayoutHeight"
+		android:gravity="center_horizontal"
+		android:orientation="horizontal"
+		android:paddingBottom="@dimen/activity_horizontal_margin">
+
+		<com.a2lab.project.giftest.widgets.RoundedButton
+			android:id="@+id/previewAct_cancelBut"
+			android:layout_width="@dimen/roundedButSize"
+			android:layout_height="@dimen/roundedButSize"
+			android:layout_marginRight="@dimen/half_margin"
+			android:background="@drawable/shape_rounded_but"
+			app:image="@drawable/ic_undo"
+			app:title="Undo"/>
+
+		<com.a2lab.project.giftest.widgets.RoundedButton
+			android:id="@+id/previewAct_shareBut"
+			android:layout_width="@dimen/roundedButSize"
+			android:layout_height="@dimen/roundedButSize"
+			android:layout_marginLeft="@dimen/half_margin"
+			android:background="@drawable/shape_rounded_but"
+			app:image="@drawable/ic_share"
+			app:title="Share"/>
+
+	</LinearLayout>
+
+	<com.a2lab.project.giftest.widgets.BottomFrameView
+		android:id="@+id/previewAct_framer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"/>
+
+</FrameLayout>
