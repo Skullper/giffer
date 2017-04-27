@@ -30,7 +30,7 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView, View.OnClickListen
 
     override fun getLayoutResource(): Int = R.layout.activity_main
 
-    override fun onCreate() {
+    override fun bindViews() {
         presenter.getRecordTime()
         askPermissions()
         mainAct_startIV.setOnClickListener(this)

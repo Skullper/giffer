@@ -21,7 +21,7 @@ class ShareActivity : BaseActivity<SharePresenter>(), ShareView {
 
     override fun getLayoutResource(): Int = R.layout.activity_share
 
-    override fun onCreate() {
+    override fun bindViews() {
         val gifUrl = intent.getStringExtra(SHARE_LINK)
         "SHARE".log("Gif url: $gifUrl")
     }

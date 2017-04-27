@@ -34,7 +34,7 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
 
     override fun getLayoutResource(): Int = R.layout.activity_preview
 
-    override fun onCreate() {
+    override fun bindViews() {
         pathToVideo = intent.getStringExtra(Constantaz.EXTRAS.PATH_TO_VIDEO)
         presenter.convertVideoToGif(pathToVideo)
 

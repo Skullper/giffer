@@ -26,7 +26,7 @@ abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
 
     abstract fun getLayoutResource(): Int
 
-    abstract fun onCreate()
+    abstract fun bindViews()
 
     lateinit var presenter: T
     private var progressView: FrameLayout? = null
@@ -37,7 +37,7 @@ abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
         addContentView(getProgressView(), ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT))
         presenter = providePresenter()
-        onCreate()
+        bindViews()
     }
 
     fun notify(message: SimpleMessage) {
