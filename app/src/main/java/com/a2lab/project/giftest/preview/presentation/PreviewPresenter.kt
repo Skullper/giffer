@@ -16,6 +16,8 @@ import com.a2lab.project.giftest.arch.presentation.BasePresenter
 import com.a2lab.project.giftest.extensions.log
 import com.a2lab.project.giftest.gif.AnimatedGifEncoder
 import com.a2lab.project.giftest.utils.FrameObtainer
+import com.a2lab.project.giftest.utils.Resource
+import com.a2lab.project.giftest.utils.Text
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.async
 import kotlinx.coroutines.experimental.channels.Channel
@@ -109,7 +111,7 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
 
     private fun writeGifOnSdCard() = launch(CommonPool) {
         val gifPath = writeGifOnSdCardAsync().await()
-        view.showMessage(res.getString(R.string.previewAct_gifCreatedMessage, gifPath))
+        view.showMessage(Text(res.getString(R.string.previewAct_gifCreatedMessage, gifPath)))
         uploadFile(gifPath)
         //use this to write each frame
 //        for(i in 0..frameObtainer.getFrames().size-1){
@@ -163,7 +165,7 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
     //uploading file to admin panel
     fun uploadFile(pathToGif: String) {
         if (pathToGif.isNullOrEmpty())
-            view.showMessage(res.getString(R.string.previewAct_cannotFindFileException))
+            view.showMessage(Resource(R.string.previewAct_cannotFindFileException))
         val gifFile = File(pathToGif)
         val extension = MimeTypeMap.getFileExtensionFromUrl(pathToGif)
         var fileType = ""
@@ -178,7 +180,7 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
 
                     override fun onResponse(call: Call<UploadingResponse>?, response: Response<UploadingResponse>?) {
                         if (response != null && response.isSuccessful) {
-                            view.showMessage(res.getString(R.string.previewAct_fileUploadedMessage))
+                            view.showMessage(Resource(R.string.previewAct_fileUploadedMessage))
                             val shareUrl = response.body()?.url
                             if (shareUrl != null && shareUrl.isNotEmpty())
                                 view.openShareAct(shareUrl)

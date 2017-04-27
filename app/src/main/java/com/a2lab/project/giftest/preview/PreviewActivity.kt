@@ -12,6 +12,7 @@ import com.a2lab.project.giftest.share.ShareActivity
 import com.a2lab.project.giftest.utils.Constantaz
 import com.a2lab.project.giftest.utils.Constantaz.EXTRAS.SHARE_LINK
 import com.a2lab.project.giftest.utils.FrameObtainer
+import com.a2lab.project.giftest.utils.SimpleMessage
 import kotlinx.android.synthetic.main.activity_preview.*
 import org.jetbrains.anko.imageBitmap
 import org.jetbrains.anko.imageResource
@@ -65,7 +66,7 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
         }
     }
 
-    override fun showMessage(message: Any) {
+    override fun showMessage(message: SimpleMessage) {
         notify(message)
     }
 

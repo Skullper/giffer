@@ -10,6 +10,9 @@ import com.a2lab.project.giftest.R
 import com.a2lab.project.giftest.arch.presentation.BasePresenter
 import com.a2lab.project.giftest.arch.presentation.BaseView
 import com.a2lab.project.giftest.utils.Constantaz
+import com.a2lab.project.giftest.utils.Resource
+import com.a2lab.project.giftest.utils.SimpleMessage
+import com.a2lab.project.giftest.utils.Text
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -37,10 +40,10 @@ abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
         onCreate()
     }
 
-    fun notify(message: Any) {
+    fun notify(message: SimpleMessage) {
         when (message) {
-            is Int -> Snackbar.make(activity_container, message, Constantaz.SNACK_BAR_DURATION).show()
-            is String -> Snackbar.make(activity_container, message, Constantaz.SNACK_BAR_DURATION).show()
+            is Text -> Snackbar.make(activity_container, message.asText, Constantaz.SNACK_BAR_DURATION).show()
+            is Resource -> Snackbar.make(activity_container, message.asResourceId, Constantaz.SNACK_BAR_DURATION).show()
         }
     }
 
