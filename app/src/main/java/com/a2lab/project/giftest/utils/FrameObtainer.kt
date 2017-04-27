@@ -28,18 +28,17 @@ class FrameObtainer(val context: Context) {
         retriever.setDataSource(context, Uri.fromFile(file))
     }
 
-    private fun getVideoDurationInSeconds(): Double {
+    private fun getVideoDurationInSeconds(): Long {
         val time = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)
-        return time.toDouble() / 1000
+        return time.toLong() / 1000
     }
 
     private fun getVideoFrame(frameTime: Long): Bitmap? = retriever.getFrameAtTime(frameTime, MediaMetadataRetriever.OPTION_CLOSEST_SYNC)
 
     fun retrieveFrames(file: File, chanel: Channel<Bitmap>) = async(CommonPool) {
-        val step = 333333L //tried to get each third frame
-        val duration = getVideoDurationInSeconds().toInt()
-        for (i in (step..duration) /*step 33333L*/) { //For some reason getting compilation error when using step function
-            val looper = step + i
+        val duration = getVideoDurationInSeconds()
+        for (i in 0..duration) {
+            val looper = i * 1000000 //because MediaDataRetriever getting frames in microseconds
             val bitmap = getVideoFrame(looper)
             if (bitmap != null) {
                 if (!chanel.isClosedForReceive)

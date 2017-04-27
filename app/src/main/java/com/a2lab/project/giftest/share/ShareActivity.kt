@@ -5,7 +5,7 @@ import com.a2lab.project.giftest.arch.BaseActivity
 import com.a2lab.project.giftest.extensions.log
 import com.a2lab.project.giftest.share.presentation.SharePresenter
 import com.a2lab.project.giftest.share.presentation.ShareView
-import com.a2lab.project.giftest.utils.EXTRAS
+import com.a2lab.project.giftest.utils.Constantaz.EXTRAS.SHARE_LINK
 
 /**
  * Created by pugman on 03.04.17.
@@ -21,7 +21,7 @@ class ShareActivity : BaseActivity<SharePresenter>(), ShareView {
     override fun getLayoutResource(): Int = R.layout.activity_share
 
     override fun onCreate() {
-        val gifUrl = intent.getStringExtra(EXTRAS.shareLink)
+        val gifUrl = intent.getStringExtra(SHARE_LINK)
         "SHARE".log("Gif url: $gifUrl")
     }
 

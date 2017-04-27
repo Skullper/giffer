@@ -42,7 +42,7 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
 
     private val FOLDER_NAME = "GifferGifs"
     private val GIF_QUALITY = 20
-    private val GIF_DELAY = 100
+    private val GIF_DELAY = 200
 
     private var gifByteArray: ByteArray? = null
 

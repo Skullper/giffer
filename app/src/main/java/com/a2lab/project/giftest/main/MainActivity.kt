@@ -12,8 +12,8 @@ import com.a2lab.project.giftest.main.presentation.MainView
 import com.a2lab.project.giftest.permissions.Demander
 import com.a2lab.project.giftest.preview.PreviewActivity
 import com.a2lab.project.giftest.utils.CameraUtil
-import com.a2lab.project.giftest.utils.EXTRAS
-import com.a2lab.project.giftest.utils.REQUEST_CODES.REQUEST_CODE_CAMERA
+import com.a2lab.project.giftest.utils.Constantaz.EXTRAS.PATH_TO_VIDEO
+import com.a2lab.project.giftest.utils.Constantaz.REQUEST_CODES.REQUEST_CODE_CAMERA
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -64,7 +64,7 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView, View.OnClickListen
         if (requestCode == REQUEST_CODE_CAMERA) {
             if (resultCode == Activity.RESULT_OK) {
                 val uri = Uri.parse(data?.dataString).path
-                startActivity<PreviewActivity>(EXTRAS.pathToVideo to uri)
+                startActivity<PreviewActivity>(PATH_TO_VIDEO to uri)
             } else showMessage(R.string.mainAct_notFoundResultException)
         } else showMessage(R.string.mainAct_notFoundRequestException)
     }

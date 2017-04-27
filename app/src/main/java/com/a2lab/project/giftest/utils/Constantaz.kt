@@ -5,17 +5,18 @@ package com.a2lab.project.giftest.utils
  * Contact the developer - sckalper@gmail.com
  * company - A2Lab
  */
-object Constantaz{
-    val SNACK_BAR_DURATION = 2000
-    val END_POINT = "http://test2.a2-lab.com/api/v1/"
-}
+class Constantaz{
+    companion object {
+        val SNACK_BAR_DURATION = 2000
+        val END_POINT = "http://test2.a2-lab.com/api/v1/"
+    }
 
-object EXTRAS {
-    val pathToVideo = "path_to_video"
-    val shareLink = "share_link"
-    val recordTime = "record_time"
-}
+    object EXTRAS {
+        val PATH_TO_VIDEO = "path_to_video"
+        val SHARE_LINK = "share_link"
+    }
 
-object REQUEST_CODES{
-    val REQUEST_CODE_CAMERA = 6969
+    object REQUEST_CODES{
+        val REQUEST_CODE_CAMERA = 6969
+    }
 }
