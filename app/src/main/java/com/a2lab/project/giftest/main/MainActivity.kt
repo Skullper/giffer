@@ -43,7 +43,7 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView, View.OnClickListen
     }
 
     override fun showMessage(message: SimpleMessage) {
-        notify(message)
+        createMessage(message).show()
     }
 
     private fun askPermissions() {

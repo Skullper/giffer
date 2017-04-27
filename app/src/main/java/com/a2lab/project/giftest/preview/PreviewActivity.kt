@@ -67,7 +67,7 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
     }
 
     override fun showMessage(message: SimpleMessage) {
-        notify(message)
+        createMessage(message).show()
     }
 
     override fun onFrameObtainError(message: Int) {

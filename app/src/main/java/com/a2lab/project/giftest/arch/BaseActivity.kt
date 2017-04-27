@@ -40,11 +40,9 @@ abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
         bindViews()
     }
 
-    fun notify(message: SimpleMessage) {
-        when (message) {
-            is Text -> Snackbar.make(activity_container, message.asText, Constantaz.SNACK_BAR_DURATION).show()
-            is Resource -> Snackbar.make(activity_container, message.asResourceId, Constantaz.SNACK_BAR_DURATION).show()
-        }
+    fun createMessage(message: SimpleMessage): Snackbar = when (message) {
+        is Text -> Snackbar.make(activity_container, message.asText, Constantaz.SNACK_BAR_DURATION)
+        is Resource -> Snackbar.make(activity_container, message.asResourceId, Constantaz.SNACK_BAR_DURATION)
     }
 
     override fun showProgress() {
