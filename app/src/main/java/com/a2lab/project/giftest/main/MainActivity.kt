@@ -7,6 +7,8 @@ import android.net.Uri
 import android.view.View
 import com.a2lab.project.giftest.R
 import com.a2lab.project.giftest.arch.BaseActivity
+import com.a2lab.project.giftest.extensions.gone
+import com.a2lab.project.giftest.extensions.visible
 import com.a2lab.project.giftest.main.presentation.MainPresenter
 import com.a2lab.project.giftest.main.presentation.MainView
 import com.a2lab.project.giftest.permissions.Demander
@@ -54,15 +56,15 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView, View.OnClickListen
     }
 
     private fun start() {
-        mainAct_timerTV.visibility = View.VISIBLE
-        mainAct_startIV.visibility = View.GONE
+        mainAct_timerTV.visible()
+        mainAct_startIV.gone()
         presenter.startTimer()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        mainAct_startIV.visibility = View.VISIBLE
-        mainAct_timerTV.visibility = View.GONE
+        mainAct_startIV.visible()
+        mainAct_timerTV.gone()
         if (requestCode == REQUEST_CODE_CAMERA) {
             if (resultCode == Activity.RESULT_OK) {
                 val uri = Uri.parse(data?.dataString).path

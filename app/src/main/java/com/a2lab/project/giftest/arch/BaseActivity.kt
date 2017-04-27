@@ -9,6 +9,8 @@ import android.widget.FrameLayout
 import com.a2lab.project.giftest.R
 import com.a2lab.project.giftest.arch.presentation.BasePresenter
 import com.a2lab.project.giftest.arch.presentation.BaseView
+import com.a2lab.project.giftest.extensions.gone
+import com.a2lab.project.giftest.extensions.visible
 import com.a2lab.project.giftest.utils.Constantaz
 import com.a2lab.project.giftest.utils.Resource
 import com.a2lab.project.giftest.utils.SimpleMessage
@@ -47,18 +49,18 @@ abstract class BaseActivity<T : BasePresenter> : AppCompatActivity(), BaseView {
 
     override fun showProgress() {
         runOnUiThread {
-            progressView?.visibility = View.VISIBLE
+            progressView?.visible()
         }
     }
 
     override fun hideProgress() {
         runOnUiThread {
-            progressView?.visibility = View.GONE
+            progressView?.gone()
         }
     }
 
     private fun getProgressView(): View {
-        val view = layoutInflater.inflate(R.layout.widget_progress_view, null, false)
+        val view = layoutInflater.inflate(R.layout.widget_progress_view, activity_container, false)
         progressView = view.findViewById(R.id.progressView) as FrameLayout
         return view
     }
