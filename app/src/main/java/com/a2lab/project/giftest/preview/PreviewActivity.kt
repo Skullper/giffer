@@ -61,15 +61,11 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
     }
 
     override fun provideGif(animation: AnimationDrawable) {
-        runOnUiThread {
-            previewAct_gifIV.setImageDrawable(animation)
-            animation.start()
-        }
+        previewAct_gifIV.setImageDrawable(animation)
+        animation.start()
     }
 
-    override fun showMessage(message: SimpleMessage) {
-        showSnack(message)
-    }
+    override fun showMessage(message: SimpleMessage) = showSnack(message)
 
     override fun onFrameObtainError(message: Int) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()

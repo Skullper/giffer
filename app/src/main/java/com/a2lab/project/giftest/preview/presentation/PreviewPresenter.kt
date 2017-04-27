@@ -65,11 +65,12 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
             //closes when first frame has been retrieved
             bitmapChanel.close()
         }
-        //shows gif using AnimationDrawable. Why not Glide with arrayBytes? Because created gif had bad quality for preview
+        //shows gif using AnimationDrawable. Why not Glide with arrayBytes? Because created gif had bad quality for preview as client said
         showGif(convertBitmapsToDrawables(frames.await()))
     }
 
     private fun convertBitmapsToDrawables(frames: ArrayList<Bitmap>): List<Drawable> {
+        //stop blocking user interactions
         view.hideProgress()
         return frames.map { bitmap ->
             BitmapDrawable(res, bitmap)
@@ -85,6 +86,7 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
     }
 
     fun saveGif(@DrawableRes frameId: Int) = launch(CommonPool) {
+        //Blocking user interactions
         view.showProgress()
         val gif = generateGifAsync(addPictureOnEachFrame(frameId))
         val bos = gif.await()
@@ -136,8 +138,8 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
 
         //adding overlay
         var frameBitmap = BitmapFactory.decodeResource(res, frame)
-        frameBitmap = Bitmap.createScaledBitmap(frameBitmap, frameObtainer.getFrames().toList()[0].width,
-                frameObtainer.getFrames().toList()[0].height, false)
+        frameBitmap = Bitmap.createScaledBitmap(frameBitmap, frameObtainer.getFrames().first().width,
+                frameObtainer.getFrames().first().height, false)
         try {
             return frameObtainer.getFrames().map { frame ->
                 addCustomFrameOnGif(frame, frameBitmap)
@@ -177,9 +179,7 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
                     override fun onResponse(call: Call<UploadingResponse>?, response: Response<UploadingResponse>?) {
                         if (response != null && response.isSuccessful) {
                             view.showMessage(Resource(R.string.previewAct_fileUploadedMessage))
-                            val shareUrl = response.body()?.url
-                            if (shareUrl != null && shareUrl.isNotEmpty())
-                                view.openShareAct(shareUrl)
+                            view.openShareAct(response.body()?.url ?: "")
                         }
                     }
                 })
