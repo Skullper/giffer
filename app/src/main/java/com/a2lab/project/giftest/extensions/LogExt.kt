@@ -7,10 +7,4 @@ import android.util.Log
  * Contact the developer - sckalper@gmail.com
  * company - A2Lab
  */
-fun String.log(text: String? = "Empty", throwable: Throwable?){
-    Log.e(this, text, throwable)
-}
-
-fun String.log(text: String? = "Empty"){
-    Log.e(this, text)
-}
+fun <A: Any> A.log(text: String = "", throwable: Throwable? = null) = apply { Log.e(this.toString(), text, throwable) }
