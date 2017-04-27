@@ -7,8 +7,4 @@ import com.google.gson.annotations.SerializedName
 * Contact the developer - sckalper@gmail.com
 * company - A2Lab
 */
-class SettingsResponse: BaseResponse() {
-
-    @SerializedName("captureTime")
-    lateinit var recordTime: String
-}
+data class SettingsResponse(@SerializedName("captureTime") val recordTime: String): BaseResponse()

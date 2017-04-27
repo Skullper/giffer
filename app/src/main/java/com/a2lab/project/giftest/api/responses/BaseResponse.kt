@@ -6,5 +6,4 @@ package com.a2lab.project.giftest.api.responses
  * company - A2Lab
  */
 
-open class BaseResponse {
-}
+open class BaseResponse

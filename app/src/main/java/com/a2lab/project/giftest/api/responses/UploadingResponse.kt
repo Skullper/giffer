@@ -8,8 +8,4 @@ import com.google.gson.annotations.SerializedName
  * company - A2Lab
  */
 
-class UploadingResponse {
-
-    @SerializedName("file_url")
-    lateinit var url: String
-}
+data class UploadingResponse(@SerializedName("file_url") val url: String): BaseResponse()
