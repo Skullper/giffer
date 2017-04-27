@@ -8,6 +8,7 @@ import android.view.View
 import com.a2lab.project.giftest.R
 import com.a2lab.project.giftest.arch.BaseActivity
 import com.a2lab.project.giftest.extensions.gone
+import com.a2lab.project.giftest.extensions.showSnack
 import com.a2lab.project.giftest.extensions.visible
 import com.a2lab.project.giftest.main.presentation.MainPresenter
 import com.a2lab.project.giftest.main.presentation.MainView
@@ -33,7 +34,9 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView, View.OnClickListen
     override fun getLayoutResource(): Int = R.layout.activity_main
 
     override fun bindViews() {
-        presenter.getRecordTime()
+        presenter.getRecordTime {
+            recordTime = it ?: 6F
+        }
         askPermissions()
         mainAct_startIV.setOnClickListener(this)
     }
@@ -45,7 +48,7 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView, View.OnClickListen
     }
 
     override fun showMessage(message: SimpleMessage) {
-        createMessage(message).show()
+        showSnack(message)
     }
 
     private fun askPermissions() {
@@ -73,16 +76,10 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView, View.OnClickListen
         } else showMessage(Resource(R.string.mainAct_notFoundRequestException))
     }
 
-    override fun onTimerFinished() {
-        camera.start(recordTime)
-    }
+    override fun onTimerFinished() = camera.start(recordTime)
 
     override fun updateTimerView(seconds: String) {
         mainAct_timerTV.text = seconds
-    }
-
-    override fun setRecordTime(time: Float?) {
-        recordTime = time ?: 6F
     }
 
 }

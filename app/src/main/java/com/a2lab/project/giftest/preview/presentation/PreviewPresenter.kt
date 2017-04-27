@@ -78,10 +78,8 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
 
     private fun showGif(frames: List<Drawable>) {
         val animation = AnimationDrawable()
-        for (i in 0..frames.size - 1) {
-            val step = i + GIF_DELAY
-            animation.addFrame(frames[i], step)
-        }
+        val i = 0
+        frames.map { animation.addFrame(it, i + GIF_DELAY) }
         animation.isOneShot = false
         view.provideGif(animation)
     }
@@ -114,9 +112,7 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
         view.showMessage(Text(res.getString(R.string.previewAct_gifCreatedMessage, gifPath)))
         uploadFile(gifPath)
         //use this to write each frame
-//        for(i in 0..frameObtainer.getFrames().size-1){
-//            saveToInternalStorage(frameObtainer.getFrames().toList()[i], i)
-//        }
+//        frameObtainer.getFrames().map { saveToInternalStorage(it) }
     }
 
     private fun writeGifOnSdCardAsync() = async(CommonPool) {
@@ -190,14 +186,14 @@ class PreviewPresenter(override val view: PreviewView, val frameObtainer: FrameO
     }
 
     //test function
-    private fun saveToInternalStorage(bitmapImage: Bitmap, number: Int): String {
+    private fun saveToInternalStorage(bitmapImage: Bitmap): String {
         val directory = File(Environment.getExternalStorageDirectory().absolutePath + "/GifferGifs/")
         // Create imageDir
-        val mypath = File(directory, "profile$number.jpg")
+        val myPath = File(directory, "profile${System.currentTimeMillis()}.jpg")
 
         var fos: FileOutputStream? = null
         try {
-            fos = FileOutputStream(mypath)
+            fos = FileOutputStream(myPath)
             // Use the compress method on the BitMap object to write image to the OutputStream
             bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos)
         } catch (e: Exception) {

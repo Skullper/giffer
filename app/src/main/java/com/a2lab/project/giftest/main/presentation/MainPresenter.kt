@@ -45,7 +45,7 @@ class MainPresenter(override val view: MainView) : BasePresenter() {
         }
     }
 
-    fun getRecordTime() {
+    fun getRecordTime(setTime: (value: Float?) -> Unit) {
         model.getResponse().enqueue(object : Callback<SettingsResponse> {
             override fun onFailure(call: Call<SettingsResponse>?, t: Throwable?) {
                 "SETTINGS_FAILURE".log(throwable = t)
@@ -53,7 +53,7 @@ class MainPresenter(override val view: MainView) : BasePresenter() {
 
             override fun onResponse(call: Call<SettingsResponse>?, response: Response<SettingsResponse>?) {
                 if (response?.isSuccessful ?: false)
-                    view.setRecordTime(response?.body()?.recordTime?.toFloat())
+                    setTime(response?.body()?.recordTime?.toFloat())
             }
         })
     }

@@ -13,6 +13,4 @@ interface MainView: BaseView{
 
     fun onTimerFinished()
 
-    fun setRecordTime(time: Float?)
-
 }

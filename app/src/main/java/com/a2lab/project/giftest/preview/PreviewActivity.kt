@@ -6,6 +6,7 @@ import android.support.annotation.DrawableRes
 import android.widget.Toast
 import com.a2lab.project.giftest.R
 import com.a2lab.project.giftest.arch.BaseActivity
+import com.a2lab.project.giftest.extensions.showSnack
 import com.a2lab.project.giftest.preview.presentation.PreviewPresenter
 import com.a2lab.project.giftest.preview.presentation.PreviewView
 import com.a2lab.project.giftest.share.ShareActivity
@@ -50,7 +51,7 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
     fun getFramesFromResources(): ArrayList<Int> {
         val frames = resources.obtainTypedArray(R.array.frames)
         val tempList = ArrayList<Int>()
-        (0..frames.length() - 1).mapTo(tempList) { frames.getResourceId(it, DEFAULT_FRAME) }
+        (0 until frames.length()).mapTo(tempList) { frames.getResourceId(it, DEFAULT_FRAME) }
         frames.recycle()
         return tempList
     }
@@ -67,7 +68,7 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
     }
 
     override fun showMessage(message: SimpleMessage) {
-        createMessage(message).show()
+        showSnack(message)
     }
 
     override fun onFrameObtainError(message: Int) {
