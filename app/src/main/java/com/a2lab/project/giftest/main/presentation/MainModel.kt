@@ -11,7 +11,7 @@ import retrofit2.Call
  * Contact the developer - sckalper@gmail.com
  * company - A2Lab
  */
-class MainModel: BaseModel {
+class MainModel : BaseModel {
 
-    fun getResponse(): Call<SettingsResponse> = createRetroFitService(ApiService::class.java).getCaptureTime()
+    fun getResponse(): Call<SettingsResponse> = createRetroFitService<ApiService>().getCaptureTime()
 }

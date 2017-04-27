@@ -7,11 +7,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 /**
-* Created by pugman on 26.03.17.
-* Contact the developer - sckalper@gmail.com
-* company - A2Lab
-*/
-fun <T> createRetroFitService(clazz: Class<T>): T {
+ * Created by pugman on 26.03.17.
+ * Contact the developer - sckalper@gmail.com
+ * company - A2Lab
+ */
+inline fun <reified T> createRetroFitService(): T {
     val interceptor = HttpLoggingInterceptor()
     interceptor.level = HttpLoggingInterceptor.Level.BODY
     val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
@@ -20,5 +20,5 @@ fun <T> createRetroFitService(clazz: Class<T>): T {
             .baseUrl(Constantaz.END_POINT)
             .client(client)
             .build()
-    return retrofit.create(clazz)
+    return retrofit.create(T::class.java)
 }

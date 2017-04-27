@@ -14,5 +14,5 @@ import retrofit2.Call
  */
 class PreviewModel : BaseModel {
 
-    fun upload(file: RequestBody): Call<UploadingResponse> = createRetroFitService(ApiService::class.java).uploadGif(file)
+    fun upload(file: RequestBody): Call<UploadingResponse> = createRetroFitService<ApiService>().uploadGif(file)
 }
