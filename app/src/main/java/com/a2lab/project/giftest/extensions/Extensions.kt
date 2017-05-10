@@ -2,6 +2,7 @@ package com.a2lab.project.giftest.extensions
 
 import android.app.Activity
 import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.View
 import com.a2lab.project.giftest.utils.Constantaz
 import com.a2lab.project.giftest.utils.Resource
@@ -10,11 +11,14 @@ import com.a2lab.project.giftest.utils.Text
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * Created by pugman on 27.04.17.
+ * Created by pugman on 10.05.17.
  * Contact the developer - sckalper@gmail.com
  * company - A2Lab
  */
+//LOGS
+fun <A: Any> A.log(text: String = "", throwable: Throwable? = null) = apply { Log.e(this.toString(), text, throwable) }
 
+//VIEWS
 fun View.visible() {
     visibility = View.VISIBLE
 }
