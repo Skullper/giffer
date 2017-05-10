@@ -5,7 +5,7 @@ import com.a2lab.project.giftest.arch.BaseActivity
 import com.a2lab.project.giftest.extensions.log
 import com.a2lab.project.giftest.share.presentation.SharePresenter
 import com.a2lab.project.giftest.share.presentation.ShareView
-import com.a2lab.project.giftest.utils.Constantaz.EXTRAS.SHARE_LINK
+import com.a2lab.project.giftest.utils.SHARE_LINK
 import com.a2lab.project.giftest.utils.SimpleMessage
 
 /**

@@ -3,7 +3,6 @@ package com.a2lab.project.giftest.utils
 import android.app.Activity
 import android.os.Environment
 import android.util.Log
-import com.a2lab.project.giftest.utils.Constantaz.REQUEST_CODES.REQUEST_CODE_CAMERA
 import com.afollestad.materialcamera.MaterialCamera
 import java.io.File
 

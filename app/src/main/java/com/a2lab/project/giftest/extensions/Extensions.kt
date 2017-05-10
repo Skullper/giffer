@@ -4,8 +4,8 @@ import android.app.Activity
 import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.View
-import com.a2lab.project.giftest.utils.Constantaz
 import com.a2lab.project.giftest.utils.Resource
+import com.a2lab.project.giftest.utils.SNACK_BAR_DURATION
 import com.a2lab.project.giftest.utils.SimpleMessage
 import com.a2lab.project.giftest.utils.Text
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,6 +28,6 @@ fun View.gone() {
 }
 
 fun Activity.showSnack(message: SimpleMessage) = when (message) {
-    is Text -> Snackbar.make(activity_container, message.asText, Constantaz.SNACK_BAR_DURATION).show()
-    is Resource -> Snackbar.make(activity_container, message.asResourceId, Constantaz.SNACK_BAR_DURATION).show()
+    is Text -> Snackbar.make(activity_container, message.asText, SNACK_BAR_DURATION).show()
+    is Resource -> Snackbar.make(activity_container, message.asResourceId, SNACK_BAR_DURATION).show()
 }

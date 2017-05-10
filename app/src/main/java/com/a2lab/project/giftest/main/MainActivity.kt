@@ -14,11 +14,7 @@ import com.a2lab.project.giftest.main.presentation.MainPresenter
 import com.a2lab.project.giftest.main.presentation.MainView
 import com.a2lab.project.giftest.permissions.Demander
 import com.a2lab.project.giftest.preview.PreviewActivity
-import com.a2lab.project.giftest.utils.CameraUtil
-import com.a2lab.project.giftest.utils.Constantaz.EXTRAS.PATH_TO_VIDEO
-import com.a2lab.project.giftest.utils.Constantaz.REQUEST_CODES.REQUEST_CODE_CAMERA
-import com.a2lab.project.giftest.utils.Resource
-import com.a2lab.project.giftest.utils.SimpleMessage
+import com.a2lab.project.giftest.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 

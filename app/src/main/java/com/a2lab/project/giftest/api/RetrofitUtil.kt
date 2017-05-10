@@ -1,6 +1,6 @@
 package com.a2lab.project.giftest.api
 
-import com.a2lab.project.giftest.utils.Constantaz
+import com.a2lab.project.giftest.utils.END_POINT
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,7 +17,7 @@ inline fun <reified T> createRetroFitService(): T {
     val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
     val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(Constantaz.END_POINT)
+            .baseUrl(END_POINT)
             .client(client)
             .build()
     return retrofit.create(T::class.java)

@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.a2lab.project.giftest.arch.presentation.BasePresenter
-import com.a2lab.project.giftest.utils.Constantaz
+import com.a2lab.project.giftest.utils.SNACK_BAR_DURATION
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -37,8 +37,8 @@ abstract class BaseFragment<T : BasePresenter> : Fragment(){
 
     fun notify(message: Any){
         when (message) {
-            is Int -> Snackbar.make(activity_container, message, Constantaz.SNACK_BAR_DURATION).show()
-            is String -> Snackbar.make(activity_container, message, Constantaz.SNACK_BAR_DURATION).show()
+            is Int -> Snackbar.make(activity_container, message, SNACK_BAR_DURATION).show()
+            is String -> Snackbar.make(activity_container, message, SNACK_BAR_DURATION).show()
         }
     }
 

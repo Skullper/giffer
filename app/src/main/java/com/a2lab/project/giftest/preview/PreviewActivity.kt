@@ -10,9 +10,9 @@ import com.a2lab.project.giftest.extensions.showSnack
 import com.a2lab.project.giftest.preview.presentation.PreviewPresenter
 import com.a2lab.project.giftest.preview.presentation.PreviewView
 import com.a2lab.project.giftest.share.ShareActivity
-import com.a2lab.project.giftest.utils.Constantaz
-import com.a2lab.project.giftest.utils.Constantaz.EXTRAS.SHARE_LINK
 import com.a2lab.project.giftest.utils.FrameObtainer
+import com.a2lab.project.giftest.utils.PATH_TO_VIDEO
+import com.a2lab.project.giftest.utils.SHARE_LINK
 import com.a2lab.project.giftest.utils.SimpleMessage
 import kotlinx.android.synthetic.main.activity_preview.*
 import org.jetbrains.anko.imageBitmap
@@ -36,7 +36,7 @@ class PreviewActivity : BaseActivity<PreviewPresenter>(), PreviewView {
     override fun getLayoutResource(): Int = R.layout.activity_preview
 
     override fun bindViews() {
-        pathToVideo = intent.getStringExtra(Constantaz.EXTRAS.PATH_TO_VIDEO)
+        pathToVideo = intent.getStringExtra(PATH_TO_VIDEO)
         presenter.convertVideoToGif(pathToVideo)
 
         var selectedFrame = DEFAULT_FRAME
